@@ -96,6 +96,28 @@ export default function InputArea({ subject: initialSubject }) {
     }
   };
 
+  // Support pasting image directly from clipboard
+  const handlePaste = (e) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const file = items[i].getAsFile();
+        if (file) {
+          if (file.size > 10 * 1024 * 1024) {
+            toast.error('Image size cannot exceed 10MB');
+            return;
+          }
+          setImageFile(file);
+          setImagePreview(URL.createObjectURL(file));
+          setMode('image');
+          e.preventDefault();
+          break;
+        }
+      }
+    }
+  };
+
   // Auto-resize the textarea as the user types
   const handleTextareaInput = (e) => {
     setText(e.target.value);
@@ -162,6 +184,7 @@ export default function InputArea({ subject: initialSubject }) {
             value={text}
             onChange={handleTextareaInput}
             onKeyDown={handleKeyDown}
+            onPaste={handlePaste}
             placeholder={
               mode === 'image'
                 ? 'Add a question about the image (optional)...'
