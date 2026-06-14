@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 const Chat = require('../models/Chat');
 const User = require('../models/User');
 const geminiService = require('../services/geminiService');
@@ -151,9 +152,8 @@ const sendImageMessage = async (req, res) => {
     return res.status(404).json({ success: false, message: 'Chat not found' });
   }
 
-  // Read file from disk to buffer for Groq Vision
-  const fileBuffer = fs.readFileSync(req.file.path);
-  const visionResult = await geminiService.analyzeImage(fileBuffer, req.file.mimetype);
+  // Call Groq Vision directly using the buffer
+  const visionResult = await geminiService.analyzeImage(req.file.buffer, req.file.mimetype);
 
   // Combine query text: use custom question if provided, else use extracted text
   const finalQuestion = (question && question.trim() !== '') 
@@ -169,14 +169,16 @@ const sendImageMessage = async (req, res) => {
     chat.messages
   );
 
-  const relativeImageUrl = `/uploads/${req.file.filename}`;
+  // Store image directly as base64 Data URI so it works in serverless Vercel environment
+  const base64Image = req.file.buffer.toString('base64');
+  const base64ImageUrl = `data:${req.file.mimetype};base64,${base64Image}`;
 
   // Append user & assistant messages
   chat.messages.push({
     role: 'user',
     content: question || 'Please explain the attached image.',
     inputType: 'image',
-    imageUrl: relativeImageUrl
+    imageUrl: base64ImageUrl
   });
 
   chat.messages.push({
@@ -223,16 +225,28 @@ const sendVoiceMessage = async (req, res) => {
 
   let transcript = '';
   let assistantAnswer = '';
+  
+  // Write audio to temporary file in local temp folder for AssemblyAI transcription
+  const tempFilename = `voice_${Date.now()}_${Math.round(Math.random() * 1e9)}.webm`;
+  const tempPath = path.join(os.tmpdir(), tempFilename);
 
   try {
+    fs.writeFileSync(tempPath, req.file.buffer);
+    
     // Transcribe audio
-    transcript = await speechService.transcribeAudio(req.file.path);
+    transcript = await speechService.transcribeAudio(tempPath);
   } catch (error) {
     console.error('Audio transcription failed:', error);
-    // Continue with fallback message instead of throwing 500
+  } finally {
+    // Cleanup temp file
+    if (fs.existsSync(tempPath)) {
+      try {
+        fs.unlinkSync(tempPath);
+      } catch (e) {
+        console.error('Failed to delete temp file:', e);
+      }
+    }
   }
-
-  const relativeVoiceUrl = `/uploads/${req.file.filename}`;
 
   if (!transcript || transcript.trim() === '') {
     transcript = '[Audio query - transcription unavailable]';
@@ -256,7 +270,7 @@ const sendVoiceMessage = async (req, res) => {
     role: 'user',
     content: transcript,
     inputType: 'voice',
-    voiceUrl: relativeVoiceUrl,
+    voiceUrl: null, // No disk url needed
     transcript: transcript
   });
 
