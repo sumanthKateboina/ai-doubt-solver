@@ -10,7 +10,7 @@ const detectSubject = async (question) => {
       messages: [
         {
           role: 'system',
-          content: 'You are an academic classifier. Given a student question, classify it into one of these subjects: Mathematics, Physics, Chemistry, Biology, History, Geography, English, Computer Science, Economics. Return ONLY the name of the subject as a single word.'
+          content: 'You are an academic classifier. Given a student question, classify it into one of these subjects: Mathematics, Physics, Chemistry, Biology, History, Geography, English, Computer Science, Economics, General. Return ONLY the name of the subject as a single word.'
         },
         {
           role: 'user',
@@ -22,7 +22,7 @@ const detectSubject = async (question) => {
     });
 
     const subject = response.choices[0].message.content.trim();
-    const validSubjects = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', 'Geography', 'English', 'Computer Science', 'Economics'];
+    const validSubjects = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'History', 'Geography', 'English', 'Computer Science', 'Economics', 'General'];
     
     // Clean any trailing punctuation or extra characters
     const cleanSubject = validSubjects.find(s => subject.toLowerCase().includes(s.toLowerCase()));
@@ -54,7 +54,8 @@ Follow these guidelines:
    - If the question is in Telugu, reply in Telugu but write the words in the English/Latin alphabet (Tanglish). For example, write "Nuvvu ela unnavu?" instead of "నువ్వు ఎలా ఉన్నావు?".
    - If the question is in Hindi, reply in Hindi but write the words in the English/Latin alphabet (Hinglish). For example, write "Aap kaise hain?" instead of "आप कैसे हैं?".
    - Use colloquial, daily day-to-day conversational language. Avoid overly complex, formal, or pure regional vocabulary that is hard to understand.
-   - If the question is in English, reply in English.`;
+   - If the question is in English, reply in English.
+8. If the student's question is a simple casual greeting, small talk, or personal question (e.g. 'hi', 'hello', 'thinnava' / 'had your food', 'kya kar rahe ho', 'how are you'), respond warmly, casually, and briefly in the same language/script (e.g. Hinglish for Hindi, Tanglish for Telugu). Do not give academic lectures or subject explanations for casual greetings. Keep the response short and friendly, and ask how you can help them with their doubts today.`;
 
   // Format conversation history for Groq
   const messages = [
