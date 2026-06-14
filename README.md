@@ -18,7 +18,7 @@ An interactive, full-stack tutoring application designed to help students solve 
 - **🤖 Step-by-Step AI Tutoring**: Powered by state-of-the-art **Groq Cloud API** (running LLaMA 3.3 70B model) to provide pedagogical, interactive, and structured solutions.
 - **🗣️ Multilingual & Transliteration (Tanglish/Hinglish)**: Ask questions in Telugu, Hindi, or English. The AI responds matching the language, utilizing friendly day-to-day transliterated phonetic English letters (e.g. Tanglish/Hinglish) for regional responses to maximize readability.
 - **📚 Saved History**: All chat sessions are automatically organized by subject (e.g., Mathematics, Physics, Chemistry, General) and saved securely in MongoDB.
-- **🎨 Premium Cinematic UX/UI**: Styled using Tailwind CSS v4 featuring a dark cinematic Royal Blue & Gold theme, glassmorphism, hardware-accelerated **slide-in page transitions**, and clean high-contrast white chat bubbles (Option B) for perfect readability.
+- **🎨 Premium Cinematic UX/UI**: Styled using Tailwind CSS v4 featuring a premium light Royal Blue & Gold theme, a dynamic **3D animated floating mesh background**, glassmorphism, hardware-accelerated **slide-in page transitions**, and clean high-contrast white chat bubbles (Option B) for perfect readability.
 
 ---
 
