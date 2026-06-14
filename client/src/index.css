@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-950 font-sans antialiased;
+  }
+}
+
+/* Custom visual utilities for a premium look */
+.card {
+  @apply bg-white border border-gray-100 rounded-2xl p-5 shadow-sm transition-all hover:shadow-md;
+}
+
+.input-field {
+  @apply w-full px-4 py-2 bg-white border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all;
+}
+
+.btn-primary {
+  @apply px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-xl flex items-center justify-center gap-1.5 transition-all shadow-sm shadow-blue-500/10 active:scale-[0.98];
+}
+
+.btn-secondary {
+  @apply px-4 py-2 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 text-gray-700 font-medium rounded-xl flex items-center justify-center gap-1.5 transition-all active:scale-[0.98];
+}
+
+/* Scrollbar styling for smooth chat container */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+/* Custom Markdown Content styles inside message bubbles */
+.markdown-content {
+  @apply text-sm leading-relaxed text-gray-800 space-y-3;
+}
+.markdown-content h1, .markdown-content h2, .markdown-content h3 {
+  @apply font-bold text-gray-900 mt-4 mb-2;
+}
+.markdown-content h1 { @apply text-lg; }
+.markdown-content h2 { @apply text-base; }
+.markdown-content h3 { @apply text-sm; }
+.markdown-content p { @apply my-2; }
+.markdown-content ul { @apply list-disc pl-5 space-y-1 my-2; }
+.markdown-content ol { @apply list-decimal pl-5 space-y-1 my-2; }
+.markdown-content li { @apply pl-0.5; }
+.markdown-content strong { @apply font-semibold text-gray-950; }
+.markdown-content code { @apply font-mono bg-gray-50 px-1 py-0.5 rounded text-xs text-red-600; }
+.markdown-content pre { @apply bg-gray-900 text-gray-100 p-4 rounded-xl overflow-x-auto my-3 text-xs leading-5; }
+.markdown-content pre code { @apply p-0 bg-transparent text-gray-100 text-xs; }
+.markdown-content blockquote { @apply border-l-4 border-gray-200 pl-4 italic text-gray-600; }
+
+/* Micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

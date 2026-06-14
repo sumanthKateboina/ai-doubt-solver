@@ -1,0 +1,23 @@
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment variables
+.env
+server/.env
+client/.env
+
+# Production build outputs
+client/dist/
+
+# Uploaded files
+server/uploads/*
+!server/uploads/.gitkeep
+
+# IDE and system files
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.ntuser
