@@ -96,7 +96,7 @@ export default function MessageBubble({ message }) {
               <span>Voice message transcribed</span>
             </div>
           )}
-          <div className="bg-gradient-to-tr from-indigo-950 to-purple-950 border border-amber-500/25 text-white rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg shadow-indigo-950/40">
+          <div className="bg-white border border-slate-100 text-slate-800 rounded-2xl rounded-br-sm px-4 py-2.5 shadow-md hover:border-amber-500/35 transition-colors">
             <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
           </div>
           <div className="flex items-center gap-2 px-1">
@@ -118,11 +118,11 @@ export default function MessageBubble({ message }) {
         <Brain className="w-4 h-4 text-amber-400" />
       </div>
       <div className="flex-1 max-w-[90%]">
-        <div className="bg-slate-900/60 backdrop-blur-md rounded-2xl rounded-bl-sm px-4 py-3 shadow-2xl border border-slate-900 relative group">
+        <div className="bg-white border border-slate-100 rounded-2xl rounded-bl-sm px-4 py-3 shadow-md hover:border-amber-500/25 transition-colors relative group">
           {/* Copy button — visible on hover */}
           <button
             onClick={copyContent}
-            className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all"
+            className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 p-1.5 text-slate-400 hover:text-slate-800 hover:bg-slate-100 rounded-lg transition-all"
           >
             {copied
               ? <Check className="w-3.5 h-3.5 text-green-400" />
