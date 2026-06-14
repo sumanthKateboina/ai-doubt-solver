@@ -119,10 +119,10 @@ export default function InputArea({ subject: initialSubject }) {
       {/* Image preview thumbnail */}
       {imagePreview && (
         <div className="relative inline-block">
-          <img src={imagePreview} alt="Preview" className="h-24 rounded-xl border border-gray-200 object-contain" />
+          <img src={imagePreview} alt="Preview" className="h-24 rounded-xl border border-slate-800 object-contain" />
           <button
             onClick={removeImage}
-            className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-600"
+            className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-650"
           >
             <X className="w-3 h-3" />
           </button>
@@ -135,18 +135,18 @@ export default function InputArea({ subject: initialSubject }) {
         <div className="relative flex-shrink-0">
           <button
             onClick={() => setShowSubjectPicker(p => !p)}
-            className="flex items-center gap-1 px-2.5 py-2 text-xs font-medium text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors"
+            className="flex items-center gap-1 px-2.5 py-2.5 text-xs font-semibold text-slate-300 bg-slate-850 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors"
           >
             {selectedSubject}
             <ChevronDown className="w-3 h-3" />
           </button>
           {showSubjectPicker && (
-            <div className="absolute bottom-full mb-1 left-0 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-20 min-w-[160px]">
+            <div className="absolute bottom-full mb-1 left-0 bg-slate-900 border border-slate-800 rounded-xl shadow-2xl py-1 z-20 min-w-[160px]">
               {SUBJECTS.map(s => (
                 <button
                   key={s}
                   onClick={() => { setSelectedSubject(s); setShowSubjectPicker(false); }}
-                  className={`w-full text-left px-3 py-1.5 text-xs hover:bg-gray-50 ${selectedSubject === s ? 'text-blue-600 font-medium' : 'text-gray-700'}`}
+                  className={`w-full text-left px-3 py-1.5 text-xs hover:bg-slate-800 ${selectedSubject === s ? 'text-indigo-400 font-semibold' : 'text-slate-300'}`}
                 >
                   {s}
                 </button>
@@ -178,10 +178,10 @@ export default function InputArea({ subject: initialSubject }) {
           onClick={() => fileInputRef.current?.click()}
           disabled={sendingMessage}
           title="Upload image"
-          className={`p-2.5 rounded-lg transition-colors flex-shrink-0 ${
+          className={`p-2.5 rounded-lg transition-colors flex-shrink-0 border border-transparent ${
             mode === 'image'
-              ? 'bg-purple-100 text-purple-600'
-              : 'text-gray-500 hover:bg-gray-100 hover:text-purple-600'
+              ? 'bg-purple-950/60 text-purple-400 border-purple-900/40'
+              : 'text-slate-400 hover:bg-slate-850 hover:text-purple-400'
           }`}
         >
           <Image className="w-5 h-5" />
@@ -199,7 +199,7 @@ export default function InputArea({ subject: initialSubject }) {
           onClick={() => setShowVoice(true)}
           disabled={sendingMessage}
           title="Voice input"
-          className="p-2.5 text-gray-500 hover:bg-gray-100 hover:text-green-600 rounded-lg transition-colors flex-shrink-0"
+          className="p-2.5 text-slate-400 hover:bg-slate-850 hover:text-emerald-400 rounded-lg transition-colors flex-shrink-0"
         >
           <Mic className="w-5 h-5" />
         </button>
@@ -217,7 +217,7 @@ export default function InputArea({ subject: initialSubject }) {
         </button>
       </div>
 
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-xs text-slate-500 text-center">
         AI can make mistakes. Verify important information.
       </p>
     </div>

@@ -129,11 +129,11 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-4">
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl">
       {/* Header row */}
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-medium text-sm text-gray-700">Voice Input</h3>
-        <button onClick={onCancel} className="text-gray-400 hover:text-gray-600">
+        <h3 className="font-semibold text-sm text-white">Voice Input</h3>
+        <button onClick={onCancel} className="text-slate-400 hover:text-white">
           <X className="w-4 h-4" />
         </button>
       </div>
@@ -141,14 +141,14 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
       {/* ── IDLE state ─────────────────────────────────────────── */}
       {status === 'idle' && (
         <div className="text-center py-4">
-          <p className="text-sm text-gray-500 mb-4">Press the button and speak your doubt clearly</p>
+          <p className="text-sm text-slate-400 mb-4">Press the button and speak your doubt clearly</p>
           <button
             onClick={startRecording}
-            className="w-16 h-16 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center mx-auto shadow-lg transition-colors"
+            className="w-16 h-16 bg-red-500 hover:bg-red-600 text-white rounded-full flex items-center justify-center mx-auto shadow-lg transition-colors cursor-pointer"
           >
             <Mic className="w-7 h-7" />
           </button>
-          <p className="text-xs text-gray-400 mt-3">Max 2 minutes</p>
+          <p className="text-xs text-slate-500 mt-3">Max 2 minutes</p>
         </div>
       )}
 
@@ -157,9 +157,9 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
         <div className="text-center py-4">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-            <span className="text-red-500 font-medium text-sm">Recording...</span>
+            <span className="text-red-500 font-semibold text-sm">Recording...</span>
           </div>
-          <p className="text-3xl font-mono font-bold text-gray-900 mb-4">{formatTime(duration)}</p>
+          <p className="text-3xl font-mono font-bold text-white mb-4">{formatTime(duration)}</p>
           {/* Waveform animation */}
           <div className="flex items-center justify-center gap-1 mb-4 h-8">
             {[...Array(20)].map((_, i) => (
@@ -176,22 +176,22 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
           </div>
           <button
             onClick={stopRecording}
-            className="w-14 h-14 bg-gray-800 hover:bg-gray-900 text-white rounded-full flex items-center justify-center mx-auto shadow-lg transition-colors"
+            className="w-14 h-14 bg-slate-800 hover:bg-slate-700 text-white rounded-full flex items-center justify-center mx-auto shadow-lg transition-colors cursor-pointer"
           >
             <Square className="w-5 h-5" />
           </button>
-          <p className="text-xs text-gray-400 mt-2">Tap to stop</p>
+          <p className="text-xs text-slate-500 mt-2">Tap to stop</p>
         </div>
       )}
 
       {/* ── STOPPED state ──────────────────────────────────────── */}
       {status === 'stopped' && (
         <div className="py-2">
-          <p className="text-sm text-gray-600 mb-3 text-center">
+          <p className="text-sm text-slate-300 mb-3 text-center">
             Recording complete ({formatTime(duration)})
           </p>
           {audioUrl && (
-            <audio controls src={audioUrl} className="w-full mb-4 rounded-lg" />
+            <audio controls src={audioUrl} className="w-full mb-4 rounded-lg bg-slate-850" />
           )}
           <div className="flex gap-2">
             <button onClick={handleDiscard} className="btn-secondary flex-1 text-sm py-2">
@@ -204,7 +204,7 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
               }
             </button>
           </div>
-          <p className="text-xs text-gray-400 text-center mt-2">
+          <p className="text-xs text-slate-500 text-center mt-2">
             Will be transcribed by AssemblyAI
           </p>
         </div>

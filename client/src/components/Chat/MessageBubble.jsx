@@ -20,13 +20,13 @@ import toast from 'react-hot-toast';
 // ── Sub-component: small badge showing text / image / voice ──
 const InputTypeBadge = ({ type }) => {
   const badges = {
-    image: { icon: <Image className="w-3 h-3" />, label: 'Image', cls: 'bg-purple-100 text-purple-700' },
-    voice: { icon: <Mic   className="w-3 h-3" />, label: 'Voice', cls: 'bg-green-100 text-green-700'  },
-    text:  { icon: <FileText className="w-3 h-3" />, label: 'Text', cls: 'bg-blue-100 text-blue-700'  },
+    image: { icon: <Image className="w-3 h-3" />, label: 'Image', cls: 'bg-purple-950/60 text-purple-400 border border-purple-900/40' },
+    voice: { icon: <Mic   className="w-3 h-3" />, label: 'Voice', cls: 'bg-emerald-950/60 text-emerald-400 border border-emerald-900/40'  },
+    text:  { icon: <FileText className="w-3 h-3" />, label: 'Text', cls: 'bg-blue-950/60 text-blue-400 border border-blue-900/40'  },
   };
   const badge = badges[type] || badges.text;
   return (
-    <span className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded-full font-medium ${badge.cls}`}>
+    <span className={`inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-medium border ${badge.cls}`}>
       {badge.icon} {badge.label}
     </span>
   );
@@ -44,7 +44,7 @@ const MarkdownRenderer = ({ content }) => (
               {String(children).replace(/\n$/, '')}
             </SyntaxHighlighter>
           ) : (
-            <code className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-xs font-mono" {...props}>
+            <code className="bg-slate-950/80 text-pink-400 px-1.5 py-0.5 rounded text-xs font-mono border border-slate-800/60" {...props}>
               {children}
             </code>
           );
@@ -86,25 +86,25 @@ export default function MessageBubble({ message }) {
             <img
               src={message.imageUrl}
               alt="Uploaded"
-              className="rounded-xl max-w-xs max-h-64 object-contain border border-gray-200 mb-1"
+              className="rounded-xl max-w-xs max-h-64 object-contain border border-slate-800 mb-1"
             />
           )}
           {/* Voice transcription note */}
           {message.inputType === 'voice' && (
-            <div className="flex items-center gap-1.5 text-xs text-gray-500 mb-1">
-              <Mic className="w-3 h-3" />
+            <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
+              <Mic className="w-3 h-3 text-emerald-400" />
               <span>Voice message transcribed</span>
             </div>
           )}
-          <div className="bg-blue-600 text-white rounded-2xl rounded-br-sm px-4 py-2.5 shadow-sm">
+          <div className="bg-gradient-to-tr from-indigo-600 to-blue-600 text-white rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg shadow-indigo-500/10">
             <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
           </div>
           <div className="flex items-center gap-2 px-1">
             <InputTypeBadge type={message.inputType} />
-            <span className="text-xs text-gray-400">{timestamp}</span>
+            <span className="text-xs text-slate-500">{timestamp}</span>
           </div>
         </div>
-        <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 ml-2 mt-auto">
+        <div className="w-8 h-8 bg-gradient-to-tr from-indigo-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 ml-2 mt-auto shadow-lg shadow-indigo-500/15">
           <User className="w-4 h-4 text-white" />
         </div>
       </div>
@@ -114,25 +114,25 @@ export default function MessageBubble({ message }) {
   // ── AI bubble (left side) ───────────────────────────────────
   return (
     <div className="flex items-start gap-2.5 mb-3 animate-fade-in">
-      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+      <div className="w-8 h-8 bg-gradient-to-tr from-cyan-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg shadow-cyan-500/15">
         <Brain className="w-4 h-4 text-white" />
       </div>
       <div className="flex-1 max-w-[90%]">
-        <div className="bg-white rounded-2xl rounded-bl-sm px-4 py-3 shadow-sm border border-gray-100 relative group">
+        <div className="bg-slate-900/60 backdrop-blur-md rounded-2xl rounded-bl-sm px-4 py-3 shadow-2xl border border-slate-800/60 relative group">
           {/* Copy button — visible on hover */}
           <button
             onClick={copyContent}
-            className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 p-1.5 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-all"
+            className="absolute top-2.5 right-2.5 opacity-0 group-hover:opacity-100 p-1.5 text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all"
           >
             {copied
-              ? <Check className="w-3.5 h-3.5 text-green-500" />
+              ? <Check className="w-3.5 h-3.5 text-green-400" />
               : <Copy  className="w-3.5 h-3.5" />
             }
           </button>
           <MarkdownRenderer content={message.content} />
         </div>
         <div className="flex items-center gap-1 px-1 mt-1">
-          <span className="text-xs text-gray-400">{timestamp}</span>
+          <span className="text-xs text-slate-500">{timestamp}</span>
         </div>
       </div>
     </div>

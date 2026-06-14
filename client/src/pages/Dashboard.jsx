@@ -18,17 +18,17 @@ import { chatAPI } from '../services/api';
 import Navbar from '../components/Layout/Navbar';
 
 const SUBJECT_COLORS = {
-  Mathematics:       'bg-blue-100 text-blue-700',
-  Physics:           'bg-purple-100 text-purple-700',
-  Chemistry:         'bg-green-100 text-green-700',
-  Biology:           'bg-emerald-100 text-emerald-700',
-  History:           'bg-orange-100 text-orange-700',
-  Geography:         'bg-yellow-100 text-yellow-700',
-  English:           'bg-pink-100 text-pink-700',
-  'Computer Science':'bg-indigo-100 text-indigo-700',
-  Economics:         'bg-red-100 text-red-700',
-  General:           'bg-gray-100 text-gray-700',
-  Other:             'bg-gray-100 text-gray-600',
+  Mathematics:       'bg-blue-950/60 text-blue-400 border border-blue-900/40',
+  Physics:           'bg-purple-950/60 text-purple-400 border border-purple-900/40',
+  Chemistry:         'bg-green-950/60 text-green-400 border border-green-900/40',
+  Biology:           'bg-emerald-950/60 text-emerald-400 border border-emerald-900/40',
+  History:           'bg-orange-950/60 text-orange-400 border border-orange-900/40',
+  Geography:         'bg-yellow-950/60 text-yellow-400 border border-yellow-900/40',
+  English:           'bg-pink-950/60 text-pink-400 border border-pink-900/40',
+  'Computer Science':'bg-indigo-950/60 text-indigo-400 border border-indigo-900/40',
+  Economics:         'bg-red-950/60 text-red-400 border border-red-900/40',
+  General:           'bg-slate-800/60 text-slate-300 border border-slate-700/40',
+  Other:             'bg-slate-800/60 text-slate-400 border border-slate-700/40',
 };
 
 export default function Dashboard() {
@@ -76,17 +76,17 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navbar />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
         {/* Welcome header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl font-bold text-white">
               Hello, {user?.name?.split(' ')[0]}!
             </h1>
-            <p className="text-gray-500 text-sm mt-0.5">What would you like to learn today?</p>
+            <p className="text-slate-400 text-sm mt-0.5">What would you like to learn today?</p>
           </div>
           <button onClick={handleNewChat} disabled={creatingChat} className="btn-primary">
             {creatingChat
@@ -101,36 +101,36 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Card 1 */}
             <div className="card flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-blue-950/40 text-blue-400 border border-blue-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                 <MessageSquare className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">{stats.totalChats}</p>
-                <p className="text-gray-500 text-sm">Conversations</p>
+                <p className="text-2xl font-bold text-white">{stats.totalChats}</p>
+                <p className="text-slate-450 text-sm">Conversations</p>
               </div>
             </div>
 
             {/* Card 2 */}
             <div className="card flex items-center gap-4">
-              <div className="w-12 h-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-emerald-950/40 text-emerald-400 border border-emerald-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                 <BookOpen className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">{stats.totalDoubts}</p>
-                <p className="text-gray-500 text-sm">Doubts Solved</p>
+                <p className="text-2xl font-bold text-white">{stats.totalDoubts}</p>
+                <p className="text-slate-450 text-sm">Doubts Solved</p>
               </div>
             </div>
 
             {/* Card 3 */}
             <div className="card flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center flex-shrink-0">
+              <div className="w-12 h-12 bg-purple-950/40 text-purple-400 border border-purple-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
                 <BarChart2 className="w-6 h-6" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-gray-900">
+                <p className="text-2xl font-bold text-white">
                   {Object.keys(stats.subjectBreakdown || {}).length}
                 </p>
-                <p className="text-gray-500 text-sm">Subjects Covered</p>
+                <p className="text-slate-455 text-sm">Subjects Covered</p>
               </div>
             </div>
           </div>
@@ -138,51 +138,51 @@ export default function Dashboard() {
 
         {/* Conversations List */}
         <div className="card">
-          <h2 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-gray-400" />
+          <h2 className="font-semibold text-white mb-4 flex items-center gap-2">
+            <Clock className="w-5 h-5 text-slate-500" />
             Recent Conversations
           </h2>
 
           {loadingChats ? (
             <div className="flex items-center justify-center py-12">
-              <Loader2 className="w-6 h-6 text-blue-500 animate-spin" />
+              <Loader2 className="w-6 h-6 text-indigo-500 animate-spin" />
             </div>
           ) : chats.length === 0 ? (
             <div className="text-center py-16">
-              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Brain className="w-8 h-8 text-blue-400" />
+              <div className="w-16 h-16 bg-indigo-950/40 border border-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Brain className="w-8 h-8 text-indigo-400" />
               </div>
-              <h3 className="font-medium text-gray-900 mb-2">No conversations yet</h3>
-              <p className="text-sm text-gray-500 mb-6">Start by asking your first doubt!</p>
+              <h3 className="font-medium text-white mb-2">No conversations yet</h3>
+              <p className="text-sm text-slate-400 mb-6">Start by asking your first doubt!</p>
               <button onClick={handleNewChat} className="btn-primary">
                 <Plus className="w-4 h-4" /> Start New Chat
               </button>
             </div>
           ) : (
-            <div className="divide-y divide-gray-50">
+            <div className="divide-y divide-slate-800/40">
               {chats.map(chat => (
                 <div
                   key={chat._id}
                   onClick={() => handleOpenChat(chat._id)}
-                  className="flex items-center gap-4 py-3.5 px-2 -mx-2 rounded-lg hover:bg-gray-50 cursor-pointer group transition-colors"
+                  className="flex items-center gap-4 py-3.5 px-3 -mx-2 rounded-lg hover:bg-slate-800/30 cursor-pointer group transition-colors"
                 >
-                  <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MessageSquare className="w-5 h-5 text-blue-500" />
+                  <div className="w-10 h-10 bg-indigo-950/40 border border-indigo-900/30 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="w-5 h-5 text-indigo-400" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
-                      <p className="font-medium text-sm text-gray-900 truncate">{chat.title}</p>
-                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium flex-shrink-0 ${SUBJECT_COLORS[chat.subject] || SUBJECT_COLORS.General}`}>
+                      <p className="font-medium text-sm text-white truncate">{chat.title}</p>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium flex-shrink-0 border ${SUBJECT_COLORS[chat.subject] || SUBJECT_COLORS.General}`}>
                         {chat.subject}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-500 truncate">{chat.lastMessage || 'Empty conversation'}</p>
+                    <p className="text-xs text-slate-400 truncate">{chat.lastMessage || 'Empty conversation'}</p>
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
-                    <span className="text-xs text-gray-400">{timeAgo(chat.lastActivity)}</span>
+                    <span className="text-xs text-slate-500">{timeAgo(chat.lastActivity)}</span>
                     <button
                       onClick={(e) => handleDelete(e, chat._id)}
-                      className="opacity-0 group-hover:opacity-100 p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
+                      className="opacity-0 group-hover:opacity-100 p-1.5 text-slate-400 hover:text-red-400 hover:bg-red-950/30 rounded-lg transition-all"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
                     </button>

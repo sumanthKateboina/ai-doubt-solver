@@ -40,25 +40,25 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-gradient-to-tr from-indigo-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <Brain className="w-6 h-6 text-white" />
             </div>
-            <span className="font-bold text-xl text-gray-900">AI Doubt Solver</span>
+            <span className="font-bold text-xl text-white">AI Doubt Solver</span>
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900">Welcome back!</h1>
-          <p className="text-gray-500 text-sm mt-1">Sign in to continue learning</p>
+          <h1 className="text-2xl font-bold text-white">Welcome back!</h1>
+          <p className="text-slate-400 text-sm mt-1">Sign in to continue learning</p>
         </div>
 
         {/* Form */}
         <div className="card">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Email</label>
               <input
                 type="email"
                 name="email"
@@ -72,7 +72,7 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Password</label>
               <div className="relative">
                 <input
                   type={showPw ? 'text' : 'password'}
@@ -87,7 +87,7 @@ export default function Login() {
                 <button
                   type="button"
                   onClick={() => setShowPw(p => !p)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white"
                 >
                   {showPw ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                 </button>
@@ -101,15 +101,15 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 mt-5">
+          <p className="text-center text-sm text-slate-400 mt-5">
             Don't have an account?{' '}
-            <Link to="/register" className="text-blue-600 font-medium hover:underline">
+            <Link to="/register" className="text-indigo-400 font-semibold hover:underline">
               Create one
             </Link>
           </p>
         </div>
 
-        <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg text-xs text-yellow-700 text-center">
+        <div className="mt-4 p-3 bg-amber-950/30 border border-amber-900/30 rounded-lg text-xs text-amber-450 text-center">
           <strong>Demo:</strong> Register a new account to get started
         </div>
       </div>

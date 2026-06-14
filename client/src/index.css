@@ -2,28 +2,33 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-950 font-sans antialiased;
+    @apply bg-[#030712] text-slate-100 font-sans antialiased;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
   }
 }
 
-/* Custom visual utilities for a premium look */
+/* Custom Visual Utilities for a Premium Cinematic Look */
 .card {
-  @apply bg-white border border-gray-100 rounded-2xl p-5 shadow-sm transition-all hover:shadow-md;
+  @apply bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-5 shadow-2xl transition-all duration-300 hover:border-slate-700/80 hover:shadow-indigo-500/5 hover:-translate-y-0.5;
 }
 
 .input-field {
-  @apply w-full px-4 py-2 bg-white border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all;
+  @apply w-full px-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/60 transition-all duration-300;
 }
 
 .btn-primary {
-  @apply px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-medium rounded-xl flex items-center justify-center gap-1.5 transition-all shadow-sm shadow-blue-500/10 active:scale-[0.98];
+  @apply px-4 py-2.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-500 hover:via-blue-500 hover:to-indigo-600 disabled:from-slate-700 disabled:to-slate-800 text-white font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-all duration-300 shadow-md shadow-indigo-500/20 active:scale-[0.98] cursor-pointer;
 }
 
 .btn-secondary {
-  @apply px-4 py-2 bg-gray-100 hover:bg-gray-200 disabled:bg-gray-50 text-gray-700 font-medium rounded-xl flex items-center justify-center gap-1.5 transition-all active:scale-[0.98];
+  @apply px-4 py-2.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-all duration-300 border border-slate-700/50 active:scale-[0.98] cursor-pointer;
 }
 
-/* Scrollbar styling for smooth chat container */
+/* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -32,32 +37,32 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e2e8f0;
+  background: #1e293b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #cbd5e1;
+  background: #334155;
 }
 
 /* Custom Markdown Content styles inside message bubbles */
 .markdown-content {
-  @apply text-sm leading-relaxed text-gray-800 space-y-3;
+  @apply text-sm leading-relaxed text-slate-200 space-y-3;
 }
 .markdown-content h1, .markdown-content h2, .markdown-content h3 {
-  @apply font-bold text-gray-900 mt-4 mb-2;
+  @apply font-bold text-slate-100 mt-4 mb-2;
 }
 .markdown-content h1 { @apply text-lg; }
 .markdown-content h2 { @apply text-base; }
 .markdown-content h3 { @apply text-sm; }
 .markdown-content p { @apply my-2; }
-.markdown-content ul { @apply list-disc pl-5 space-y-1 my-2; }
-.markdown-content ol { @apply list-decimal pl-5 space-y-1 my-2; }
+.markdown-content ul { @apply list-disc pl-5 space-y-1 my-2 text-slate-300; }
+.markdown-content ol { @apply list-decimal pl-5 space-y-1 my-2 text-slate-300; }
 .markdown-content li { @apply pl-0.5; }
-.markdown-content strong { @apply font-semibold text-gray-950; }
-.markdown-content code { @apply font-mono bg-gray-50 px-1 py-0.5 rounded text-xs text-red-600; }
-.markdown-content pre { @apply bg-gray-900 text-gray-100 p-4 rounded-xl overflow-x-auto my-3 text-xs leading-5; }
-.markdown-content pre code { @apply p-0 bg-transparent text-gray-100 text-xs; }
-.markdown-content blockquote { @apply border-l-4 border-gray-200 pl-4 italic text-gray-600; }
+.markdown-content strong { @apply font-semibold text-white; }
+.markdown-content code { @apply font-mono bg-slate-950/80 px-1.5 py-0.5 rounded text-xs text-pink-400 border border-slate-800/60; }
+.markdown-content pre { @apply bg-slate-950 text-slate-100 p-4 rounded-xl overflow-x-auto my-3 text-xs leading-5 border border-slate-800; }
+.markdown-content pre code { @apply p-0 bg-transparent text-slate-100 text-xs border-0; }
+.markdown-content blockquote { @apply border-l-4 border-indigo-500/50 pl-4 italic text-slate-400; }
 
 /* Micro-animations */
 @keyframes fadeIn {
