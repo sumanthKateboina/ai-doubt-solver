@@ -1,11 +1,44 @@
 const { groq } = require('../config/gemini');
 
 /**
+ * Helper to call Groq Chat API with automatic rate-limit fallback
+ */
+const callGroqChat = async (params) => {
+  try {
+    return await groq.chat.completions.create(params);
+  } catch (error) {
+    const isRateLimit = error.status === 429 || (error.message && error.message.toLowerCase().includes('rate limit'));
+    
+    if (isRateLimit) {
+      if (params.model === 'llama-3.3-70b-versatile') {
+        console.warn('Groq 70B model rate limit reached. Retrying with fallback 8B model (llama-3.1-8b-instant)...');
+        try {
+          return await groq.chat.completions.create({ ...params, model: 'llama-3.1-8b-instant' });
+        } catch (fallbackError) {
+          console.error('Fallback 8B model also failed:', fallbackError);
+          throw fallbackError;
+        }
+      }
+      if (params.model === 'meta-llama/llama-4-scout-17b-16e-instruct') {
+        console.warn('Groq Scout Vision model rate limit reached. Retrying with fallback vision model (llama-3.2-11b-vision-preview)...');
+        try {
+          return await groq.chat.completions.create({ ...params, model: 'llama-3.2-11b-vision-preview' });
+        } catch (fallbackError) {
+          console.error('Fallback Vision model also failed:', fallbackError);
+          throw fallbackError;
+        }
+      }
+    }
+    throw error;
+  }
+};
+
+/**
  * Detect the subject from a student query using Groq
  */
 const detectSubject = async (question) => {
   try {
-    const response = await groq.chat.completions.create({
+    const response = await callGroqChat({
       model: 'llama-3.3-70b-versatile',
       messages: [
         {
@@ -71,7 +104,7 @@ Follow these guidelines:
     { role: 'user', content: question }
   ];
 
-  const response = await groq.chat.completions.create({
+  const response = await callGroqChat({
     model: 'llama-3.3-70b-versatile',
     messages,
     max_tokens: 1500,
@@ -89,7 +122,7 @@ Follow these guidelines:
  */
 const analyzeImage = async (fileBuffer, mimetype) => {
   const base64Image = fileBuffer.toString('base64');
-  const response = await groq.chat.completions.create({
+  const response = await callGroqChat({
     model: 'meta-llama/llama-4-scout-17b-16e-instruct',
     messages: [
       {
