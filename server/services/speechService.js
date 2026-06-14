@@ -1,34 +1,28 @@
-const { AssemblyAI } = require('assemblyai');
-
-// AssemblyAI client setup
-const client = new AssemblyAI({
-  apiKey: process.env.ASSEMBLYAI_API_KEY || 'fake_key_for_now'
-});
+const fs = require('fs');
+const { groq } = require('../config/gemini');
 
 /**
- * Transcribes audio file or buffer to text using AssemblyAI
- * @param {Buffer|string} audioData - The audio buffer or the local file path
+ * Transcribes audio file using Groq Whisper API
+ * @param {string} filePath - The local file path to the audio file
  * @returns {Promise<string>} - The transcribed text
  */
-const transcribeAudio = async (audioData) => {
+const transcribeAudio = async (filePath) => {
   try {
-    if (!process.env.ASSEMBLYAI_API_KEY) {
-      throw new Error('ASSEMBLYAI_API_KEY is not defined in the environment variables');
+    if (!process.env.GROQ_API_KEY) {
+      throw new Error('GROQ_API_KEY is not defined in the environment variables');
     }
     
-    const transcript = await client.transcripts.transcribe({
-      audio: audioData
+    const response = await groq.audio.transcriptions.create({
+      file: fs.createReadStream(filePath),
+      model: 'whisper-large-v3',
     });
 
-    if (transcript.status === 'error') {
-      throw new Error(`AssemblyAI transcription error: ${transcript.error}`);
-    }
-
-    return transcript.text || '';
+    return response.text || '';
   } catch (error) {
-    console.error('Speech transcription service error:', error);
+    console.error('Speech transcription service error (Groq):', error);
     throw error;
   }
 };
 
 module.exports = { transcribeAudio };
+

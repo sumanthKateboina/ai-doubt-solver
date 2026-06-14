@@ -205,7 +205,7 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
             </button>
           </div>
           <p className="text-xs text-slate-500 text-center mt-2">
-            Will be transcribed by AssemblyAI
+            Will be transcribed by AI
           </p>
         </div>
       )}
