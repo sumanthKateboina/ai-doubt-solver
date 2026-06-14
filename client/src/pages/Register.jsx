@@ -81,7 +81,7 @@ export default function Register() {
         <div className="card">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Full Name *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">Full Name *</label>
               <input
                 type="text"
                 name="name"
@@ -94,7 +94,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Email *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">Email *</label>
               <input
                 type="email"
                 name="email"
@@ -107,7 +107,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Password *</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">Password *</label>
               <div className="relative">
                 <input
                   type={showPw ? 'text' : 'password'}
@@ -129,14 +129,14 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Grade</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">Grade</label>
               <select name="grade" value={form.grade} onChange={handleChange} className="input-field bg-slate-950 text-slate-100">
                 {GRADES.map(g => <option key={g} value={g} className="bg-slate-900 text-slate-100">{g}</option>)}
               </select>
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-2">Subjects (optional)</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-2">Subjects (optional)</label>
               <div className="flex flex-wrap gap-2">
                 {SUBJECTS.map(sub => (
                   <button
@@ -146,7 +146,7 @@ export default function Register() {
                     className={`px-3 py-1 rounded-full text-xs font-semibold border transition-colors cursor-pointer ${
                       form.subjects.includes(sub)
                         ? 'bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-500/20'
-                        : 'bg-slate-955 text-slate-300 border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400'
+                        : 'bg-slate-900 text-slate-300 border-slate-800 hover:border-indigo-500/50 hover:text-indigo-400'
                     }`}
                   >
                     {sub}

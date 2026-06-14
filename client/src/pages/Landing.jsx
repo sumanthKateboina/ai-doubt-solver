@@ -11,32 +11,32 @@ import { Brain, MessageSquare, Image, Mic, BookOpen, Zap, Shield, ArrowRight } f
 
 const features = [
   {
-    icon: <MessageSquare className="w-6 h-6 text-blue-500" />,
+    icon: <MessageSquare className="w-6 h-6 text-amber-400" />,
     title: 'Text Doubts',
     desc: 'Type any question and get instant, detailed explanations from your AI tutor.',
   },
   {
-    icon: <Image className="w-6 h-6 text-purple-500" />,
+    icon: <Image className="w-6 h-6 text-purple-400" />,
     title: 'Image Doubts',
     desc: 'Upload photos of problems, diagrams, or equations. Vision AI analyzes them instantly.',
   },
   {
-    icon: <Mic className="w-6 h-6 text-green-500" />,
+    icon: <Mic className="w-6 h-6 text-emerald-400" />,
     title: 'Voice Doubts',
     desc: 'Record your question and our AI transcribes and answers it in seconds.',
   },
   {
-    icon: <BookOpen className="w-6 h-6 text-orange-500" />,
+    icon: <BookOpen className="w-6 h-6 text-amber-500" />,
     title: 'All Subjects',
     desc: 'Math, Physics, Chemistry, Biology, History, English, and more — all in one place.',
   },
   {
-    icon: <Zap className="w-6 h-6 text-yellow-500" />,
+    icon: <Zap className="w-6 h-6 text-yellow-400" />,
     title: 'Instant Answers',
     desc: 'No waiting. Get step-by-step solutions in seconds powered by Groq LLaMA.',
   },
   {
-    icon: <Shield className="w-6 h-6 text-red-500" />,
+    icon: <Shield className="w-6 h-6 text-red-400" />,
     title: 'Chat History',
     desc: 'All your doubts are saved. Review previous conversations anytime.',
   },
@@ -48,13 +48,13 @@ export default function Landing() {
       {/* Navbar */}
       <nav className="flex items-center justify-between px-6 py-4 max-w-6xl mx-auto">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-gradient-to-tr from-indigo-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-            <Brain className="w-5 h-5 text-white" />
+          <div className="w-9 h-9 bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 rounded-xl flex items-center justify-center shadow-lg shadow-amber-500/20">
+            <Brain className="w-5 h-5 text-slate-950" />
           </div>
           <span className="font-bold text-xl text-white">AI Doubt Solver</span>
         </div>
         <div className="flex items-center gap-3">
-          <Link to="/login" className="text-sm font-semibold text-slate-350 hover:text-white px-4 py-2">
+          <Link to="/login" className="text-sm font-semibold text-slate-300 hover:text-white px-4 py-2">
             Login
           </Link>
           <Link to="/register" className="btn-primary text-sm px-5 py-2">
@@ -65,13 +65,13 @@ export default function Landing() {
 
       {/* Hero */}
       <section className="text-center py-20 px-6 max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 bg-indigo-950/60 text-indigo-400 border border-indigo-900/40 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+        <div className="inline-flex items-center gap-2 bg-amber-950/30 text-amber-400 border border-amber-900/30 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
           <Zap className="w-4 h-4" />
           Powered by Groq LLaMA & AssemblyAI
         </div>
         <h1 className="text-5xl font-extrabold text-white mb-6 leading-tight">
           Your Personal AI Tutor <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-blue-400 to-cyan-400">Available 24/7</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500">Available 24/7</span>
         </h1>
         <p className="text-xl text-slate-400 mb-8 max-w-2xl mx-auto">
           Ask doubts via text, image, or voice. Get instant step-by-step explanations
@@ -88,8 +88,8 @@ export default function Landing() {
         </div>
 
         {/* Demo preview */}
-        <div className="mt-16 bg-slate-900/50 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-800/80 p-4 max-w-2xl mx-auto">
-          <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-800/60">
+        <div className="mt-16 bg-slate-900/50 backdrop-blur-md rounded-2xl shadow-2xl border border-slate-900 p-4 max-w-2xl mx-auto">
+          <div className="flex items-center gap-2 mb-4 pb-3 border-b border-slate-900">
             <div className="w-3 h-3 rounded-full bg-red-400"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
             <div className="w-3 h-3 rounded-full bg-green-400"></div>
@@ -97,16 +97,16 @@ export default function Landing() {
           </div>
           <div className="space-y-3 text-left">
             <div className="flex justify-end">
-              <div className="bg-gradient-to-tr from-indigo-600 to-blue-600 text-white rounded-2xl rounded-br-sm px-4 py-2 text-sm max-w-xs shadow-md shadow-indigo-500/10">
+              <div className="bg-gradient-to-tr from-indigo-900 to-purple-900 border border-amber-500/25 text-white rounded-2xl rounded-br-sm px-4 py-2 text-sm max-w-xs shadow-md shadow-indigo-950/20">
                 What is the quadratic formula and how do I use it?
               </div>
             </div>
             <div className="flex gap-2">
-              <div className="w-7 h-7 bg-indigo-950/60 border border-indigo-900/30 rounded-full flex items-center justify-center flex-shrink-0">
-                <Brain className="w-4 h-4 text-indigo-400" />
+              <div className="w-7 h-7 bg-amber-950/40 border border-amber-500/30 rounded-full flex items-center justify-center flex-shrink-0">
+                <Brain className="w-4 h-4 text-amber-400" />
               </div>
-              <div className="bg-slate-950/60 border border-slate-800/40 rounded-2xl rounded-bl-sm px-4 py-2 text-sm text-slate-300 max-w-sm">
-                The quadratic formula is: <strong className="text-white">x = (-b ± √(b²-4ac)) / 2a</strong>
+              <div className="bg-slate-950/60 border border-slate-900 rounded-2xl rounded-bl-sm px-4 py-2 text-sm text-slate-300 max-w-sm">
+                The quadratic formula is: <strong className="text-amber-400 font-semibold">x = (-b ± √(b²-4ac)) / 2a</strong>
                 <br /><br />
                 For ax² + bx + c = 0, simply substitute the values of a, b, and c...
               </div>
@@ -125,8 +125,8 @@ export default function Landing() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((f, i) => (
-            <div key={i} className="card hover:shadow-2xl hover:shadow-indigo-500/5 transition-all">
-              <div className="w-12 h-12 bg-slate-950/40 border border-slate-800/60 rounded-xl flex items-center justify-center mb-4">
+            <div key={i} className="card hover:shadow-2xl hover:shadow-amber-500/5 transition-all">
+              <div className="w-12 h-12 bg-slate-950/40 border border-slate-900 rounded-xl flex items-center justify-center mb-4">
                 {f.icon}
               </div>
               <h3 className="font-semibold text-white mb-2">{f.title}</h3>
@@ -138,12 +138,12 @@ export default function Landing() {
 
       {/* CTA */}
       <section className="py-16 px-6 text-center">
-        <div className="bg-gradient-to-r from-indigo-600 via-blue-650 to-indigo-800 rounded-2xl py-12 px-6 max-w-2xl mx-auto shadow-2xl shadow-indigo-500/10">
+        <div className="bg-gradient-to-r from-indigo-950 via-purple-950 to-indigo-950 border border-amber-500/35 rounded-2xl py-12 px-6 max-w-2xl mx-auto shadow-2xl shadow-indigo-950/45">
           <h2 className="text-3xl font-extrabold text-white mb-4">Ready to ace your exams?</h2>
-          <p className="text-indigo-100 mb-6">Join students already using AI to clear their doubts instantly.</p>
+          <p className="text-purple-100 mb-6">Join students already using AI to clear their doubts instantly.</p>
           <Link
             to="/register"
-            className="inline-flex items-center gap-2 bg-white text-indigo-700 font-semibold px-8 py-3 rounded-lg hover:bg-slate-100 transition-colors shadow-lg shadow-indigo-950/20"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-600 text-slate-955 font-bold px-8 py-3 rounded-lg hover:from-amber-400 hover:to-yellow-300 transition-all border border-amber-300/40 shadow-lg shadow-amber-500/20"
           >
             Create Free Account
             <ArrowRight className="w-5 h-5" />
@@ -152,7 +152,7 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="py-6 text-center text-sm text-slate-500 border-t border-slate-850/80">
+      <footer className="py-6 text-center text-sm text-slate-500 border-t border-slate-900">
         Built with React, Node.js, MongoDB, Groq LLaMA & AssemblyAI
       </footer>
     </div>

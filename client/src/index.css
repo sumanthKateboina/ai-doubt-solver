@@ -2,30 +2,31 @@
 
 @layer base {
   body {
-    @apply bg-[#030712] text-slate-100 font-sans antialiased;
+    @apply bg-[#04060f] text-slate-100 font-sans antialiased;
+    /* Royal Blue, Indigo, and Gold radial highlights */
     background-image: 
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.08) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.18) 0px, transparent 50%), /* Royal Indigo */
+      radial-gradient(at 100% 0%, rgba(212, 175, 55, 0.11) 0px, transparent 50%), /* Gold */
+      radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.16) 0px, transparent 50%); /* Royal Blue */
     background-attachment: fixed;
   }
 }
 
-/* Custom Visual Utilities for a Premium Cinematic Look */
+/* Custom Visual Utilities for a Premium Cinematic Royal & Gold Look */
 .card {
-  @apply bg-slate-900/60 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-5 shadow-2xl transition-all duration-300 hover:border-slate-700/80 hover:shadow-indigo-500/5 hover:-translate-y-0.5;
+  @apply bg-slate-950/60 backdrop-blur-xl border border-slate-900 rounded-2xl p-5 shadow-2xl transition-all duration-300 hover:border-amber-500/30 hover:shadow-amber-500/5 hover:-translate-y-0.5;
 }
 
 .input-field {
-  @apply w-full px-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500/60 transition-all duration-300;
+  @apply w-full px-4 py-2.5 bg-slate-950/60 border border-slate-800 rounded-xl text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500/10 focus:border-amber-500/40 transition-all duration-300;
 }
 
 .btn-primary {
-  @apply px-4 py-2.5 bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-700 hover:from-indigo-500 hover:via-blue-500 hover:to-indigo-600 disabled:from-slate-700 disabled:to-slate-800 text-white font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-all duration-300 shadow-md shadow-indigo-500/20 active:scale-[0.98] cursor-pointer;
+  @apply px-4 py-2.5 bg-gradient-to-r from-indigo-700 via-purple-800 to-indigo-900 hover:from-indigo-600 hover:via-purple-700 hover:to-indigo-900 disabled:from-slate-800 disabled:to-slate-900 text-white font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-all duration-300 border border-amber-500/40 hover:border-amber-400 shadow-md shadow-indigo-950/40 hover:shadow-amber-500/10 active:scale-[0.98] cursor-pointer;
 }
 
 .btn-secondary {
-  @apply px-4 py-2.5 bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-all duration-300 border border-slate-700/50 active:scale-[0.98] cursor-pointer;
+  @apply px-4 py-2.5 bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold rounded-xl flex items-center justify-center gap-1.5 transition-all duration-300 border border-slate-800/80 active:scale-[0.98] cursor-pointer;
 }
 
 /* Custom Scrollbar Styling */
@@ -59,10 +60,10 @@
 .markdown-content ol { @apply list-decimal pl-5 space-y-1 my-2 text-slate-300; }
 .markdown-content li { @apply pl-0.5; }
 .markdown-content strong { @apply font-semibold text-white; }
-.markdown-content code { @apply font-mono bg-slate-950/80 px-1.5 py-0.5 rounded text-xs text-pink-400 border border-slate-800/60; }
-.markdown-content pre { @apply bg-slate-950 text-slate-100 p-4 rounded-xl overflow-x-auto my-3 text-xs leading-5 border border-slate-800; }
+.markdown-content code { @apply font-mono bg-slate-950/80 px-1.5 py-0.5 rounded text-xs text-amber-400 border border-slate-900; }
+.markdown-content pre { @apply bg-slate-950 text-slate-100 p-4 rounded-xl overflow-x-auto my-3 text-xs leading-5 border border-slate-900; }
 .markdown-content pre code { @apply p-0 bg-transparent text-slate-100 text-xs border-0; }
-.markdown-content blockquote { @apply border-l-4 border-indigo-500/50 pl-4 italic text-slate-400; }
+.markdown-content blockquote { @apply border-l-4 border-amber-500/50 pl-4 italic text-slate-400; }
 
 /* Micro-animations */
 @keyframes fadeIn {
@@ -72,4 +73,38 @@
 
 .animate-fade-in {
   animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Snake/Slither Page Transitions */
+@keyframes slitherLeftToRight {
+  0% {
+    transform: translateX(-110%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(110%) skewX(-20deg);
+  }
+}
+
+.animate-slither-1 {
+  animation: slitherLeftToRight 0.8s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.animate-slither-2 {
+  animation: slitherLeftToRight 0.8s cubic-bezier(0.76, 0, 0.24, 1) 0.08s forwards;
+}
+.animate-slither-3 {
+  animation: slitherLeftToRight 0.8s cubic-bezier(0.76, 0, 0.24, 1) 0.16s forwards;
+}
+
+@keyframes pageReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.99) translateY(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+.animate-page-reveal {
+  animation: pageReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
 }

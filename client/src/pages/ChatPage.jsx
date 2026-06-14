@@ -49,20 +49,20 @@ export default function ChatPage() {
     Physics:           'bg-purple-950/60 text-purple-400 border-purple-900/40',
     Chemistry:         'bg-green-950/60 text-green-400 border-green-900/40',
     Biology:           'bg-emerald-950/60 text-emerald-400 border-emerald-900/40',
-    General:           'bg-slate-800/60 text-slate-350 border-slate-700/40',
+    General:           'bg-slate-800/60 text-slate-300 border-slate-700/40',
   };
-  const subjectColor = SUBJECT_COLORS[activeChat.subject] || 'bg-slate-800/60 text-slate-350 border-slate-700/40';
+  const subjectColor = SUBJECT_COLORS[activeChat.subject] || 'bg-slate-800/60 text-slate-300 border-slate-700/40';
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
 
       {/* Chat header */}
-      <div className="bg-slate-900/40 backdrop-blur-md border-b border-slate-850/80 px-4 py-3 sticky top-16 z-10">
+      <div className="bg-slate-900/40 backdrop-blur-md border-b border-slate-900 px-4 py-3 sticky top-16 z-10">
         <div className="max-w-4xl mx-auto flex items-center gap-3">
           <button
             onClick={() => navigate('/dashboard')}
-            className="p-2 text-slate-400 hover:text-white hover:bg-slate-850 rounded-lg transition-colors"
+            className="p-2 text-slate-400 hover:text-white hover:bg-slate-900 rounded-lg transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -123,7 +123,7 @@ export default function ChatPage() {
       </div>
 
       {/* Input Area - sticky at bottom */}
-      <div className="sticky bottom-0 bg-slate-950/80 backdrop-blur-lg border-t border-slate-850/80 shadow-2xl">
+      <div className="sticky bottom-0 bg-slate-950/80 backdrop-blur-lg border-t border-slate-900 shadow-2xl">
         <div className="max-w-4xl mx-auto px-4 py-3">
           <InputArea subject={activeChat.subject} />
         </div>

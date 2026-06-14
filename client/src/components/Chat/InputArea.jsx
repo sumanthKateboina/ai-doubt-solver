@@ -135,7 +135,7 @@ export default function InputArea({ subject: initialSubject }) {
         <div className="relative flex-shrink-0">
           <button
             onClick={() => setShowSubjectPicker(p => !p)}
-            className="flex items-center gap-1 px-2.5 py-2.5 text-xs font-semibold text-slate-300 bg-slate-850 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors"
+            className="flex items-center gap-1 px-2.5 py-2.5 text-xs font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors"
           >
             {selectedSubject}
             <ChevronDown className="w-3 h-3" />
@@ -181,7 +181,7 @@ export default function InputArea({ subject: initialSubject }) {
           className={`p-2.5 rounded-lg transition-colors flex-shrink-0 border border-transparent ${
             mode === 'image'
               ? 'bg-purple-950/60 text-purple-400 border-purple-900/40'
-              : 'text-slate-400 hover:bg-slate-850 hover:text-purple-400'
+              : 'text-slate-400 hover:bg-slate-900 hover:text-purple-400'
           }`}
         >
           <Image className="w-5 h-5" />
@@ -199,7 +199,7 @@ export default function InputArea({ subject: initialSubject }) {
           onClick={() => setShowVoice(true)}
           disabled={sendingMessage}
           title="Voice input"
-          className="p-2.5 text-slate-400 hover:bg-slate-850 hover:text-emerald-400 rounded-lg transition-colors flex-shrink-0"
+          className="p-2.5 text-slate-400 hover:bg-slate-900 hover:text-emerald-400 rounded-lg transition-colors flex-shrink-0"
         >
           <Mic className="w-5 h-5" />
         </button>

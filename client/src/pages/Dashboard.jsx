@@ -106,7 +106,7 @@ export default function Dashboard() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">{stats.totalChats}</p>
-                <p className="text-slate-450 text-sm">Conversations</p>
+                <p className="text-slate-400 text-sm">Conversations</p>
               </div>
             </div>
 
@@ -117,7 +117,7 @@ export default function Dashboard() {
               </div>
               <div>
                 <p className="text-2xl font-bold text-white">{stats.totalDoubts}</p>
-                <p className="text-slate-450 text-sm">Doubts Solved</p>
+                <p className="text-slate-400 text-sm">Doubts Solved</p>
               </div>
             </div>
 
@@ -130,7 +130,7 @@ export default function Dashboard() {
                 <p className="text-2xl font-bold text-white">
                   {Object.keys(stats.subjectBreakdown || {}).length}
                 </p>
-                <p className="text-slate-455 text-sm">Subjects Covered</p>
+                <p className="text-slate-400 text-sm">Subjects Covered</p>
               </div>
             </div>
           </div>

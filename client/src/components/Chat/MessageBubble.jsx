@@ -21,8 +21,8 @@ import toast from 'react-hot-toast';
 const InputTypeBadge = ({ type }) => {
   const badges = {
     image: { icon: <Image className="w-3 h-3" />, label: 'Image', cls: 'bg-purple-950/60 text-purple-400 border border-purple-900/40' },
-    voice: { icon: <Mic   className="w-3 h-3" />, label: 'Voice', cls: 'bg-emerald-950/60 text-emerald-400 border border-emerald-900/40'  },
-    text:  { icon: <FileText className="w-3 h-3" />, label: 'Text', cls: 'bg-blue-950/60 text-blue-400 border border-blue-900/40'  },
+    voice: { icon: <Mic   className="w-3 h-3" />, label: 'Voice', cls: 'bg-amber-950/60 text-amber-400 border border-amber-900/40'  },
+    text:  { icon: <FileText className="w-3 h-3" />, label: 'Text', cls: 'bg-indigo-950/60 text-indigo-300 border border-indigo-900/40'  },
   };
   const badge = badges[type] || badges.text;
   return (
@@ -92,11 +92,11 @@ export default function MessageBubble({ message }) {
           {/* Voice transcription note */}
           {message.inputType === 'voice' && (
             <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
-              <Mic className="w-3 h-3 text-emerald-400" />
+              <Mic className="w-3 h-3 text-amber-400" />
               <span>Voice message transcribed</span>
             </div>
           )}
-          <div className="bg-gradient-to-tr from-indigo-600 to-blue-600 text-white rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg shadow-indigo-500/10">
+          <div className="bg-gradient-to-tr from-indigo-950 to-purple-950 border border-amber-500/25 text-white rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg shadow-indigo-950/40">
             <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
           </div>
           <div className="flex items-center gap-2 px-1">
@@ -104,8 +104,8 @@ export default function MessageBubble({ message }) {
             <span className="text-xs text-slate-500">{timestamp}</span>
           </div>
         </div>
-        <div className="w-8 h-8 bg-gradient-to-tr from-indigo-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 ml-2 mt-auto shadow-lg shadow-indigo-500/15">
-          <User className="w-4 h-4 text-white" />
+        <div className="w-8 h-8 bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 rounded-full flex items-center justify-center flex-shrink-0 ml-2 mt-auto shadow-lg shadow-amber-500/20">
+          <User className="w-4 h-4 text-slate-950" />
         </div>
       </div>
     );
@@ -114,11 +114,11 @@ export default function MessageBubble({ message }) {
   // ── AI bubble (left side) ───────────────────────────────────
   return (
     <div className="flex items-start gap-2.5 mb-3 animate-fade-in">
-      <div className="w-8 h-8 bg-gradient-to-tr from-cyan-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg shadow-cyan-500/15">
-        <Brain className="w-4 h-4 text-white" />
+      <div className="w-8 h-8 bg-gradient-to-tr from-purple-800 to-indigo-900 border border-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-1 shadow-lg shadow-indigo-950/30">
+        <Brain className="w-4 h-4 text-amber-400" />
       </div>
       <div className="flex-1 max-w-[90%]">
-        <div className="bg-slate-900/60 backdrop-blur-md rounded-2xl rounded-bl-sm px-4 py-3 shadow-2xl border border-slate-800/60 relative group">
+        <div className="bg-slate-900/60 backdrop-blur-md rounded-2xl rounded-bl-sm px-4 py-3 shadow-2xl border border-slate-900 relative group">
           {/* Copy button — visible on hover */}
           <button
             onClick={copyContent}

@@ -58,7 +58,7 @@ export default function Login() {
         <div className="card">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Email</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">Email</label>
               <input
                 type="email"
                 name="email"
@@ -72,7 +72,7 @@ export default function Login() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-slate-350 mb-1.5">Password</label>
+              <label className="block text-sm font-semibold text-slate-300 mb-1.5">Password</label>
               <div className="relative">
                 <input
                   type={showPw ? 'text' : 'password'}
@@ -109,7 +109,7 @@ export default function Login() {
           </p>
         </div>
 
-        <div className="mt-4 p-3 bg-amber-950/30 border border-amber-900/30 rounded-lg text-xs text-amber-450 text-center">
+        <div className="mt-4 p-3 bg-amber-950/30 border border-amber-900/30 rounded-lg text-xs text-amber-400 text-center">
           <strong>Demo:</strong> Register a new account to get started
         </div>
       </div>

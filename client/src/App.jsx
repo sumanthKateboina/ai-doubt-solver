@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard';
 import ChatPage from './pages/ChatPage';
 import Landing from './pages/Landing';
 import LoadingSpinner from './components/common/LoadingSpinner';
+import TransitionWrapper from './components/common/TransitionWrapper';
 
 // ── Route Guards ────────────────────────────────────────────
 
@@ -44,14 +45,18 @@ const PublicRoute = ({ children }) => {
 // ── Route Definitions ───────────────────────────────────────
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" element={<Landing />} />
-    <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-    <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+    <Route path="/" element={<TransitionWrapper><Landing /></TransitionWrapper>} />
+    <Route path="/login" element={<PublicRoute><TransitionWrapper><Login /></TransitionWrapper></PublicRoute>} />
+    <Route path="/register" element={<PublicRoute><TransitionWrapper><Register /></TransitionWrapper></PublicRoute>} />
     <Route
       path="/dashboard"
       element={
         <PrivateRoute>
-          <ChatProvider><Dashboard /></ChatProvider>
+          <ChatProvider>
+            <TransitionWrapper>
+              <Dashboard />
+            </TransitionWrapper>
+          </ChatProvider>
         </PrivateRoute>
       }
     />
@@ -59,7 +64,11 @@ const AppRoutes = () => (
       path="/chat/:id"
       element={
         <PrivateRoute>
-          <ChatProvider><ChatPage /></ChatProvider>
+          <ChatProvider>
+            <TransitionWrapper>
+              <ChatPage />
+            </TransitionWrapper>
+          </ChatProvider>
         </PrivateRoute>
       }
     />

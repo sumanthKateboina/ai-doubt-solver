@@ -191,7 +191,7 @@ export default function VoiceInput({ onRecorded, onCancel, disabled }) {
             Recording complete ({formatTime(duration)})
           </p>
           {audioUrl && (
-            <audio controls src={audioUrl} className="w-full mb-4 rounded-lg bg-slate-850" />
+            <audio controls src={audioUrl} className="w-full mb-4 rounded-lg bg-slate-900" />
           )}
           <div className="flex gap-2">
             <button onClick={handleDiscard} className="btn-secondary flex-1 text-sm py-2">
