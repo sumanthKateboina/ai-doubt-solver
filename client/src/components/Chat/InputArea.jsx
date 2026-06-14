@@ -11,7 +11,7 @@
 // auto-resize of the textarea.
 // ============================================
 
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
 import { Send, Image, Mic, X, Loader2, ChevronDown } from 'lucide-react';
 import { ChatContext } from '../../context/ChatContext';
 import VoiceInput from './VoiceInput';
@@ -36,6 +36,16 @@ export default function InputArea({ subject: initialSubject }) {
 
   const { sendTextMessage, sendImageMessage, sendVoiceMessage, sendingMessage } = useContext(ChatContext);
 
+  // Auto-focus the input textarea when mounting or after a message finishes sending
+  useEffect(() => {
+    if (!sendingMessage && !showVoice) {
+      const timer = setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [sendingMessage, showVoice]);
+
   const handleImageSelect = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -58,7 +68,7 @@ export default function InputArea({ subject: initialSubject }) {
 
   const handleSendText = async () => {
     const trimmedText = text.trim();
-    if (!trimmedText) return;
+    if (!trimmedText || sendingMessage) return;
     setText('');
     // Reset textarea height
     if (textareaRef.current) {
@@ -68,7 +78,7 @@ export default function InputArea({ subject: initialSubject }) {
   };
 
   const handleSendImage = async () => {
-    if (!imageFile) return;
+    if (!imageFile || sendingMessage) return;
     const finalQuestion = text.trim();
     const file = imageFile;
     
@@ -91,6 +101,7 @@ export default function InputArea({ subject: initialSubject }) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
+      if (sendingMessage) return;
       if (mode === 'image') handleSendImage();
       else handleSendText();
     }
@@ -191,7 +202,6 @@ export default function InputArea({ subject: initialSubject }) {
                 : 'Ask your doubt... (Shift+Enter for new line)'
             }
             rows={1}
-            disabled={sendingMessage}
             className="w-full resize-none input-field py-2.5 pr-3 text-sm leading-relaxed min-h-[44px] max-h-[160px]"
           />
         </div>
