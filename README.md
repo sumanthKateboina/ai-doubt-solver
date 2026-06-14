@@ -13,18 +13,19 @@ An interactive, full-stack tutoring application designed to help students solve 
 
 ## ✨ Key Features
 - **🔑 Secure Authentication**: Sign up and login using JWT (JSON Web Tokens) and bcrypt password hashing.
-- **🎙️ Voice Doubts**: Record audio questions directly in the browser; transcripts are processed using the **AssemblyAI API**.
-- **📸 Image Analysis**: Upload screenshots/photos of problems (math equations, diagrams, textbooks) for multi-modal LLaMA Vision processing.
-- **🤖 Step-by-Step AI Tutoring**: Powered by state-of-the-art **Groq Cloud API** (running LLaMA models) to provide pedagogical, interactive, and structured solutions.
-- **📚 Saved History**: All chat sessions are automatically organized by subject (e.g., Mathematics, Physics, Chemistry) and saved securely in MongoDB.
-- **🎨 Modern UX/UI**: Styled using Tailwind CSS v4 featuring sleek dark mode, glassmorphism, responsive navigation, and beautiful micro-animations.
+- **🎙️ Voice Doubts**: Record audio questions directly in the browser; transcripts are processed using the **Groq Whisper API**.
+- **📸 Image Analysis & Paste**: Upload images/photos of problems or **paste them directly from your clipboard (Ctrl+V)** into the input box for LLaMA Vision processing.
+- **🤖 Step-by-Step AI Tutoring**: Powered by state-of-the-art **Groq Cloud API** (running LLaMA 3.3 70B model) to provide pedagogical, interactive, and structured solutions.
+- **🗣️ Multilingual & Transliteration (Tanglish/Hinglish)**: Ask questions in Telugu, Hindi, or English. The AI responds matching the language, utilizing friendly day-to-day transliterated phonetic English letters (e.g. Tanglish/Hinglish) for regional responses to maximize readability.
+- **📚 Saved History**: All chat sessions are automatically organized by subject (e.g., Mathematics, Physics, Chemistry, General) and saved securely in MongoDB.
+- **🎨 Premium Cinematic UX/UI**: Styled using Tailwind CSS v4 featuring a dark cinematic Royal Blue & Gold theme, glassmorphism, hardware-accelerated **slide-in page transitions**, and clean high-contrast white chat bubbles (Option B) for perfect readability.
 
 ---
 
 ## 🛠️ Technology Stack
 - **Frontend**: React (Vite), Tailwind CSS v4, Lucide React, Axios, React Router v7, React Markdown
 - **Backend**: Node.js, Express, Mongoose, Multer (in-memory buffer handling for serverless compliance)
-- **Third-Party APIs**: Groq Cloud API, AssemblyAI API
+- **Third-Party APIs**: Groq Cloud API (LLaMA Models & Whisper-large-v3 Transcription)
 - **Database**: MongoDB Atlas / Local MongoDB
 
 ---
@@ -66,7 +67,6 @@ MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_signing_key
 JWT_EXPIRE=7d
 GROQ_API_KEY=your_groq_api_key
-ASSEMBLYAI_API_KEY=your_assemblyai_api_key
 NODE_ENV=production
 MAX_FILE_SIZE=10485760
 ```
