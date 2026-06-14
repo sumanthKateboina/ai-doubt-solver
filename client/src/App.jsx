@@ -80,13 +80,20 @@ export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        {/* Animated 3D Floating Mesh Background (Light Theme with Royal Blue/Indigo and Gold) */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none -z-10 bg-[#f8fafc]">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-gradient-to-tr from-indigo-200/40 to-purple-300/35 blur-[100px] animate-float-slow"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-gradient-to-tr from-amber-100/50 to-yellow-200/40 blur-[120px] animate-float-medium"></div>
+          <div className="absolute top-[40%] left-[30%] w-[35%] h-[35%] rounded-full bg-gradient-to-tr from-indigo-100/40 to-blue-200/35 blur-[90px] animate-float-fast"></div>
+        </div>
+
         <Toaster
           position="top-right"
           toastOptions={{
             duration: 4000,
-            style: { background: '#1f2937', color: '#f9fafb', fontSize: '14px' },
-            success: { iconTheme: { primary: '#10b981', secondary: '#f9fafb' } },
-            error: { iconTheme: { primary: '#ef4444', secondary: '#f9fafb' } },
+            style: { background: '#ffffff', color: '#1e293b', fontSize: '14px', border: '1px solid #e2e8f0', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.05)' },
+            success: { iconTheme: { primary: '#10b981', secondary: '#ffffff' } },
+            error: { iconTheme: { primary: '#ef4444', secondary: '#ffffff' } },
           }}
         />
         <AppRoutes />
